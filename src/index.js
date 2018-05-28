@@ -4,6 +4,10 @@ import icon from  './company.jpg';
 import Data from './data.xml';
 import printMe from './print';
 import cube from  './math';
+
+if(process.env.NODE_ENV !=='production'){
+    console.log('Looks like we are in devlopment mode')
+}
 function component() {
     var element = document.createElement('div');
 
