@@ -2,6 +2,6 @@ export function square(x) {
     return x * x;
 }
 
-export function cube(x) {
+export default function cube(x) {
     return x * x * x;
 }
