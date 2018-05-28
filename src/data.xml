@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<node>
+    <to>Mary</to>
+    <from>Join</from>
+    <handing>Reminder</handing>
+    <body>on Tuesday</body>
+</node>
