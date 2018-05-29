@@ -1,21 +1,37 @@
 const path = require('path')
-
+const  webpack = require('webpack')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
-
+const workboxplugin = require('workbox-webpack-plugin')
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index.js',
+        another: './src/another-module.js'
     },
     plugins: [
         new cleanWebpackPlugin(['dist']),
         new htmlWebpackPlugin({
             title: 'production'
+        }),
+        new workboxplugin.GenerateSW({ //PWA渐进式网络应用程序
+            clientsClaim: true,
+            skipWaiting: true
         })
+      /*  new webpack.optimize.CommonsChunkPlugin({
+            name: 'commonplugin'
+        })*/
     ],
+    optimization: {//防止重复依赖引入
+        // runtimeChunk: true,
+        splitChunks: {
+           name: 'common',
+            chunks: 'all'
+        }
+    },
     output: {
-        filename: "[name].bundle.js",
-        path: path.resolve(__dirname,'dist')
+        filename: "js/[name].bundle.[chunkhash].js",
+        path: path.resolve(__dirname,'dist'),
+        publicPath: "/"
     },
     module: {
         rules: [{
