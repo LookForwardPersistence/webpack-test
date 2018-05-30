@@ -28,6 +28,7 @@ module.exports = {
             chunks: 'all'
         }
     },
+    mode: "development",
     output: {
         filename: "js/[name].bundle.[chunkhash].js",
         path: path.resolve(__dirname,'dist'),
@@ -43,11 +44,19 @@ module.exports = {
         },
             {
                 test: /\.(png|svg|jpg|git)$/,
-                use:['file-loader']
+                loader: 'file-loader',
+                query: {
+                    limit: 1000,
+                    name: 'img/[hash].[ext]'
+                }
             },
             {
-                test:/\.(woff|woff2|eot|ttf|otf)$/,
-                use: ['file-loader']
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 1000,
+                    name: 'fonts/[hash].[ext]'
+                }
             },
             {
                 test:/\.(csv|tsv)$/,

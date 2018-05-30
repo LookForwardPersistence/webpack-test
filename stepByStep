@@ -1,0 +1,10 @@
+webpack 版本大于4.0
+
+环境准备: nodejs
+
+初始化项目：
+cmd
+新增项目所在文件夹：mkdir webpack-test
+初始化项目：npm init（enter...）
+安装webpack包并记录：npm install webpack --save-dev
+
